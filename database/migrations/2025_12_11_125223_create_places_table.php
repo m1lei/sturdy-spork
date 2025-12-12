@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->text('description')->nullable();
+            $table->string('name');
+            $table->text('description');
             $table->string('address')->nullable();
             $table->integer('price_from')->nullable();
+            $table->string('slug')->unique();
             $table->json('image')->nullable();
-
+            $table->foreignId('city_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

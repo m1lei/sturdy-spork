@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',function() {
-    return view();
-});
+Route::get('/',[\App\Http\Controllers\IndexController::class,'index']);
+
+Route::get('/place',[\App\Http\Controllers\PlaceController::class,'index'])->name('place.index');
+Route::get('/place/{categorySlug}/{placeSlug}',[\App\Http\Controllers\PlaceController::class,'show'])->name('place.show');
