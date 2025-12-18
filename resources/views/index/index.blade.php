@@ -81,30 +81,34 @@
             <div class="filter">
                 <div class="filter-title">Поиск по Подмосковью</div>
                 <div class="search-relatives-top">
-                    <div class="filter-list">
-                        @if(isset($city) && count($city))
-                            <select class="select" name="city_slug">
-                                <option disabled>Город</option>
-                                @foreach($city as $c)
-                                    <option value="{{$c->slug}}"> {{$c->name}}</option>
-                                @endforeach
-                            </select>
-                        @endif
+                    <form action="{{route('place.index')}}" method="GET">
+                        @method("GET")
+                        <div class="filter-list">
+                            @if(isset($city) && count($city))
+                                <select class="select" name="city_slug">
+                                    <option  value="">Город</option>
+                                    @foreach($city as $c)
+                                        <option value="{{$c->slug}}"> {{$c->name}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
 
-                        @if(isset($category) && count($category))
-                            <select class="select" name="category_slug">
-                                <option disabled>Локация</option>
-                                @foreach($category as $cat)
-                                    <option value="{{$cat->slug}}"> {{$cat->name}}</option>
-                                @endforeach
-                            </select>
-                        @endif
-                    <div class="search-relatives-refine">
-                        <button id="refine" class="refine-btn">
-                            <span>Найти</span>
-                        </button>
-                    </div>
-                </div>
+                            @if(isset($category) && count($category))
+                                <select class="select" name="category_slug">
+                                    <option  value="">Локация</option>
+                                    @foreach($category as $cat)
+                                        <option value="{{$cat->slug}}"> {{$cat->name}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+                            <div class="search-relatives-refine">
+                                <button id="refine" class="refine-btn" type="submit">
+                                    <span>Найти</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
             </div>
         </div>
         </div>

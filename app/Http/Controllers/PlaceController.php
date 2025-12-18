@@ -16,10 +16,25 @@ class PlaceController extends Controller
         $city = City::all();
         $category = Category::all();
 
-        $query =
-        $places = Place::with(['city','category'])->get();
-        return view('place.index',compact('places','city','category'));
+        $query = Place::with(['city', 'category']);
+
+        if ($request->filled('city_slug')) {
+            $query->whereHas('city', function ($q) use ($request) {
+                $q->where('slug', $request->city_slug);
+            });
+        }
+
+        if ($request->filled('category_slug')) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('slug', $request->category_slug);
+            });
+        }
+
+        $places = $query->latest()->get();
+
+        return view('place.index', compact('places', 'city', 'category'));
     }
+
 
     public function show(string $categorySlug, string $placeSlug)
     {
