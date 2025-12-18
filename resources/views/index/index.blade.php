@@ -106,6 +106,11 @@
                                     <span>Найти</span>
                                 </button>
                             </div>
+                            <div class="search-relatives-refine">
+                                <a href="{{route('place.index')}}">
+                                    X
+                                </a>
+                            </div>
                         </div>
                     </form>
 

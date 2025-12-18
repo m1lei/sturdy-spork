@@ -5,17 +5,23 @@ namespace App\Models;
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Attachment\Attachable;
+use Orchid\Screen\AsSource;
 
 class Place extends Model
 {
-    use HasFactory;
+    use HasFactory ,AsSource, Attachable;
+
+
     protected $fillable = [
         'name',
         'description',
         'address',
         'price_from',
         'slug',
-        'images'
+        'image',
+        'city_id',
+        'category_id'
     ];
 
     protected $casts = [
