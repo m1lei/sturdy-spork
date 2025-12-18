@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="cdn.jsdelivr.net" />
     @vite(['resources/css/app.css'])
 </head>
 <body>
@@ -12,15 +11,15 @@
     <div class="header-top">
         <div class="header-top__row">
             <div class="header-menu-left">
-                <a href="#" class="header-logo">
+                <a href="{{route('index.index')}}" class="header-logo">
                     wedding.<b>mosreg</b>
                 </a>
                 <ul class="header-menu-list">
                     <li><a href="{{route('place.index')}}">Площадки /</a></li>
-                    <li><a href="#">Портфолио /</a></li>
-                    <li><a href="#">Отзывы /</a></li>
-                    <li><a href="#">Статьи /</a></li>
-                    <li><a href="#">Общая информация /</a></li>
+                    <li><a href="{{route('portfolio.index')}}">Портфолио /</a></li>
+                    <li><a href="{{route('place.index')}}">Отзывы /</a></li>
+                    <li><a href="{{route('place.index')}}">Статьи /</a></li>
+                    <li><a href="{{route('place.index')}}">Общая информация /</a></li>
                 </ul>
             </div>
             <div class="header-menu-right">
@@ -131,10 +130,7 @@
         </div>
     </div>
 </footer>
-<script src="cdn.jsdelivr.net"></script>
-{{-- 3. Стек для ваших скриптов инициализации --}}
-@vite(['resources/js/app.js'])
-@stack('scripts')
+
 </body>
 </html>
 
