@@ -5,15 +5,9 @@ import './bootstrap';
 import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
 import Swiper from 'swiper';
-import 'swiper/css'; // Если вы используете CSS Swiper через JS/Vite
+import 'swiper/css';
 
-window.Swiper = Swiper; // Делаем Swiper глобально доступным для main.j
-// Затем импортируем ваш файл main.js, который использует jQuery
-
-// Этот файл main.js предполагает, что jQuery и Swiper
-// уже были импортированы и сделаны глобальными в app.js:
-// import jQuery from 'jquery'; window.$ = window.jQuery = jQuery;
-// import Swiper from 'swiper'; window.Swiper = Swiper;
+window.Swiper = Swiper;
 
 jQuery(document).ready(function () {
 
@@ -78,13 +72,11 @@ jQuery(document).ready(function () {
         resizeScrenn();
     });
 
-    // --- ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ SWIPER.JS ---
 
     // Слайдер портфолио
     new Swiper('.portfolio-slider', {
         slidesPerView: 1,
         spaceBetween: 0,
-        // ... (остальные параметры autoplay, scrollbar) ...
         on: {
             init: function() {
                 $('.js-current-slide').text("0" + (this.realIndex + 1));
@@ -93,11 +85,10 @@ jQuery(document).ready(function () {
             slideChange: function() {
                 $('.js-current-slide').text("0" + (this.realIndex + 1));
             },
-            // ... (остальные обработчики setTranslate, slideChangeTransitionEnd) ...
+            //
         }
     });
 
-    // Функция для обработки translateVal (обновлена для корректного возврата значения)
     function translateVal(el) {
         if (el && el.style && el.style.transform) {
             var progress = el.style.transform.match(/translate3d\((.+)px,(.+)px,(.+)px\)/);
@@ -106,7 +97,6 @@ jQuery(document).ready(function () {
         return 0;
     }
 
-    // Слайдер популярных мест (i-three-slider)
     new Swiper(".i-three-slider", {
         slidesPerView: 3.2,
         spaceBetween: 20,
@@ -177,5 +167,4 @@ jQuery(document).ready(function () {
             }
         });
     });
-    // --- КОНЕЦ ЛОГИКИ КАСТОМНОГО SELECT ---
 });

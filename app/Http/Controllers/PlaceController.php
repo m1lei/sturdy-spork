@@ -11,10 +11,12 @@ use Illuminate\Http\Request;
 class PlaceController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         $city = City::all();
         $category = Category::all();
+
+        $query =
         $places = Place::with(['city','category'])->get();
         return view('place.index',compact('places','city','category'));
     }
@@ -27,4 +29,5 @@ class PlaceController extends Controller
 
         return view('place.show',compact('place','portfolio'));
     }
+
 }

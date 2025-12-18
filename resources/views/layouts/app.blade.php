@@ -18,7 +18,7 @@
                     <li><a href="{{route('place.index')}}">Площадки /</a></li>
                     <li><a href="{{route('portfolio.index')}}">Портфолио /</a></li>
                     <li><a href="{{route('place.index')}}">Отзывы /</a></li>
-                    <li><a href="{{route('place.index')}}">Статьи /</a></li>
+                    <li><a href="{{route('article.index')}}">Статьи /</a></li>
                     <li><a href="{{route('place.index')}}">Общая информация /</a></li>
                 </ul>
             </div>

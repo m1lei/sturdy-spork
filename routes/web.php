@@ -20,3 +20,6 @@ Route::get('/place/{categorySlug}/{placeSlug}',[\App\Http\Controllers\PlaceContr
 
 Route::get('/portfolio',[\App\Http\Controllers\PortfolioController::class,'index'])->name('portfolio.index');
 Route::get('/portfolio/{categorySlug}',[\App\Http\Controllers\PortfolioController::class,'show'])->name('portfolio.show');
+
+Route::get('/article',[\App\Http\Controllers\ArticleController::class,'index'])->name('article.index');
+Route::get('/article/{articleSlug}',[\App\Http\Controllers\ArticleController::class,'show'])->name('article.show');
