@@ -43,7 +43,9 @@
                 </div>
                 <div class="site-card-right">
                     <div class="article-content">
-                        <img src="{{asset('storage/' . $article->image)}}" alt="">
+                        @foreach($article->attachment as $file)
+                            <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
+                        @endforeach
                         <div class="site-card-description"> {{$article->content}}
                         </div>
                     </div>

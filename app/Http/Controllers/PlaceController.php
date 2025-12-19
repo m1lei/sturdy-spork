@@ -16,7 +16,7 @@ class PlaceController extends Controller
         $city = City::all();
         $category = Category::all();
 
-        $query = Place::with(['city', 'category']);
+        $query = Place::with(['city', 'category','attachment']);
 
         if ($request->filled('city_slug')) {
             $query->whereHas('city', function ($q) use ($request) {

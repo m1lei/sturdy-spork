@@ -2,13 +2,14 @@
 
 namespace App\Orchid\Screens;
 
-use App\Models\Place;
+use App\Models\Article;
+use App\Models\Portfolio;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
 
-class PlaceScreen extends Screen
+class PortfolioListController extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -18,7 +19,7 @@ class PlaceScreen extends Screen
     public function query(): iterable
     {
         return [
-            'places' => Place::with(['city','category'])->paginate(10)
+            'portfolios' => Portfolio::with(['place'])->paginate(5)
         ];
     }
 
@@ -29,7 +30,7 @@ class PlaceScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Все места';
+        return 'Портфолио';
     }
 
     /**
@@ -41,8 +42,8 @@ class PlaceScreen extends Screen
     {
         return [
             Link::make('добавить новое')
-            ->icon('pencil')
-            ->route('platform.places.create')
+                ->icon('pencil')
+                ->route('platform.portfolio.create')
         ];
     }
 
@@ -51,28 +52,21 @@ class PlaceScreen extends Screen
      *
      * @return \Orchid\Screen\Layout[]|string[]
      */
-    public function layout(): array
+    public function layout(): iterable
     {
         return [
-            Layout::table('places', [
-                TD::make('id','ID')->sort(),
-                TD::make('name','Название'),
-                TD::make('description', 'Описание'),
-                TD::make('address', 'Адрес'),
-                TD::make('price_from', 'Цена от'),
+            Layout::table('portfolios',[
+                TD::make('id', 'ID')->sort(),
+                TD::make('title', 'Название'),
                 TD::make('slug', 'url'),
-                TD::make('category_id', 'Локация',)->render(function (PLace $place){
-                    return $place->category->name;
+                TD::make('place_id', 'площадка')->render(function (Portfolio $portfolio){
+                    return $portfolio->place->name;
                 }),
-                TD::make('city_id', 'Локация',)->render(function (PLace $place){
-                    return $place->city->name;
-                }),
-                TD::make('actions', 'Действия')->render(function (Place $place){
+                TD::make('actions', 'Действия')->render(function (Portfolio $portfolio){
                     return Link::make('Редактировать')->icon('pencil')
-                            ->route('platform.places.edit',$place);
+                            ->route('platform.portfolio.edit',$portfolio);
                 })
             ])
-
         ];
     }
 }

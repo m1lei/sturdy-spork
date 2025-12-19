@@ -33,6 +33,24 @@ use Tabuna\Breadcrumbs\Trail;
 
 Route::screen('/place', \App\Orchid\Screens\PlaceScreen::class)->name('platform.places');
 Route::screen('/place/create', \App\Orchid\Screens\PlaceEditScreen::class)->name('platform.places.create');
+Route::screen('/place/{place}/edit', \App\Orchid\Screens\PlaceEditScreen::class)->name('platform.places.edit');
+
+Route::screen('/city', \App\Orchid\Screens\CityListController::class)->name('platform.city');
+Route::screen('/city/create',\App\Orchid\Screens\CityEditController::class)->name('platform.city.create');
+Route::screen('/city/{city}/edit',\App\Orchid\Screens\CityEditController::class)->name('platform.city.edit');
+
+
+Route::screen('/category', \App\Orchid\Screens\CategoryListController::class)->name('platform.category');
+Route::screen('/category/create', \App\Orchid\Screens\CategoryEditController::class)->name('platform.category.create');
+Route::screen('/category/{category}/edit', \App\Orchid\Screens\CategoryEditController::class)->name('platform.category.edit');
+
+Route::screen('/article', \App\Orchid\Screens\ArticleListScreen::class)->name('platform.article');
+Route::screen('/article/create', \App\Orchid\Screens\ArticleEditController::class)->name('platform.article.create');
+Route::screen('/article/{article}/edit', \App\Orchid\Screens\ArticleEditController::class)->name('platform.article.edit');
+
+Route::screen('/portfolio', \App\Orchid\Screens\PortfolioListController::class)->name('platform.portfolio');
+Route::screen('/portfolio/create', \App\Orchid\Screens\PortfolioEditController::class)->name('platform.portfolio.create');
+Route::screen('/portfolio/{portfolio}/edit', \App\Orchid\Screens\PortfolioEditController::class)->name('platform.portfolio.edit');
 // Main
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');

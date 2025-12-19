@@ -21,15 +21,17 @@
             </div>
             <div class="portfolio-grid">
                 @foreach($portfolio as $port)
-                    @foreach($port->images as $imagePath)
                         <div class="portfolio-grid-card">
                             <a href="{{route('portfolio.show',['categorySlug'=>$port->slug])}}">
-                                <img src="{{asset('storage/'.$port->images['path'])}}" alt="">
+                                @if($file = $port->attachment->first())
+                                    <img src="{{ $file->url() }}" alt="{{ $port->title }}">
+                                @else
+                                    <div class="no-photo">Нет изображения</div>
+                                @endif
                                 <div class="portfolio-grid-info">{{$port->place->category->name}}</div>
                                 <div class="portfolio-grid-text">{{$port->place->name}}</div>
                             </a>
                         </div>
-                    @endforeach
                 @endforeach
             </div>
         </div>

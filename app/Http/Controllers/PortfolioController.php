@@ -12,7 +12,7 @@ class PortfolioController extends Controller
 
     public function index(Request $request)
     {
-        $query = Portfolio::with(['place.category'])
+        $query = Portfolio::with(['place.category', 'attachment'])
             ->whereHas('place');
 
         if($request->filled('category')){

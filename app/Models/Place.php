@@ -19,7 +19,6 @@ class Place extends Model
         'address',
         'price_from',
         'slug',
-        'image',
         'city_id',
         'category_id'
     ];

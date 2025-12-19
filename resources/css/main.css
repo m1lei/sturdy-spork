@@ -589,9 +589,7 @@ header.transparent .header-logo-menu span {
 }
 .header-menu-list > li > span:hover,
 /* .header.transparent .header-menu-right a:hover, */
-.header .header-menu-left .header-menu-list > li ul a:hover {
-	color: var(--Green, #00d31d);
-}
+
 /* .header.transparent .header-menu-list span:hover svg, */
 .header.transparent .header-top .header-menu-right a:hover svg,
 .header-menu-list > li > span:hover svg {
@@ -938,7 +936,6 @@ header.transparent .header-logo-menu span {
 	display: block;
 	width: 100%;
 	position: relative;
-	font-family: "Montserrat";
 	font-style: normal;
 	font-weight: 500;
 	font-size: 16px;
@@ -964,7 +961,6 @@ header.transparent .header-logo-menu span {
 	position: absolute;
 	right: 18px;
 	top: 30px;
-	background: url("img/select-arr.svg") no-repeat right center / cover;
 	transition: all 0.27s ease-in-out;
 	transform: rotate(0deg);
 }
@@ -1016,7 +1012,6 @@ header.transparent .header-logo-menu span {
 .selects__head::after {
 	width: 12px;
 	height: 7px;
-	background: url("../img/select-arr.svg") no-repeat right center / cover;
 	position: absolute;
 	right: 20px;
 	bottom: 50%;
@@ -1042,7 +1037,6 @@ header.transparent .header-logo-menu span {
 	padding: 0;
 	font-size: 14px;
 	color: #8392a7;
-	scrollbar-color: dark;
 	scrollbar-width: thin;
 	overscroll-behavior: contain;
 	border-bottom-left-radius: 8px;
@@ -1145,7 +1139,6 @@ button {
 	position: absolute;
 	right: 18px;
 	top: 30px;
-	background: url("../img/select-arr.svg") no-repeat right center / cover;
 	transition: all 0.27s ease-in-out;
 	transform: rotate(0deg);
 }
@@ -2203,7 +2196,6 @@ button {
 	max-width: 316px;
 	padding: 12.912px 12.912px 25.824px 12.912px;
 	border-radius: 7.747px;
-	background: var(--bg-primary, #fff);
 	position: absolute;
 	top: 200px;
 	right: 200px;

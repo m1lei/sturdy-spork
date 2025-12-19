@@ -15,9 +15,11 @@
                 @foreach($articles as $article)
                     <div class="articles-card">
                         <a href="{{route('article.show',['articleSlug' => $article->slug])}}">
-                            <div class="articles-card-img">
-                                <img src="{{asset('storage/' . $article->image)}}" alt="">
-                            </div>
+                            @foreach($article->attachment as $file)
+                                <div class="articles-card-img">
+                                    <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
+                                </div>
+                            @endforeach
                             <div class="articles-card-content">
                                 <div class="articles-card-title">{{$article->title}}</div>
                             </div>

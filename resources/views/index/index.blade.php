@@ -139,11 +139,10 @@
                         <a href="{{route('place.show',[$place->category->slug,$place->slug])}}" class="i-three-slid">
                             <div class="i-three-slid__img">
                                 <span>{{$place->category->name}}</span>
-                                @if(is_array($place->image) && isset($place->image['path']))
-                                    <img src="{{ asset('storage/' . $place->image['path']) }}" alt="{{ $place->name }}">
-                                @else
-                                    <img src="{{asset('img/first-slide-img2.png')}}">
-                                @endif
+                                @foreach($place->attachment as $file)
+                                    <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
+                                @endforeach
+
                             </div>
                             <div class="i-three-slid__content">
                                 <div class="i-three-slid__title">{{$place->name}}</div>

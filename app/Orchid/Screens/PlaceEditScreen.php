@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\In;
+use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Support\Facades\Alert;
 use Orchid\Attachment\Attachable;
 use Orchid\Screen\Actions\Button;
@@ -39,6 +40,7 @@ class PlaceEditScreen extends Screen
      */
     public function name(): ?string
     {
+        //меняем заголовок в зависимости от создание или редактирования
         return $this->place->exists ? 'Редактировать пост' : "Создать новый пост";
     }
 
@@ -52,7 +54,11 @@ class PlaceEditScreen extends Screen
         return [
             Button::make('сохранить')
                 ->icon('pencil')
-                ->method('save')
+                ->method('save'),
+            Button::make('Удалить')
+                ->icon('pencil')
+                ->method('remove')
+                ->canSee($this->place->exists)//кнопка удалить видна ток при редактировании
         ];
     }
 
@@ -66,10 +72,10 @@ class PlaceEditScreen extends Screen
         return [
             Layout::rows([
                 Input::make('place.name')
-                    ->title(' Название')
+                    ->title('Название')
                     ->placeholder('ВВеди Название')
                     ->required(),
-                Input::make('place.description')
+                SimpleMDE::make('place.description')
                     ->title('Описание')
                     ->placeholder('Введи описание')
                     ->required(),
@@ -102,6 +108,11 @@ class PlaceEditScreen extends Screen
             $request->input('place.attachments', [])
         );
         Alert::info('YeS');
+        return redirect()->route('platform.places');
+    }
+    public function remove(Place $place){
+        $place->delete();
+        Alert::info('delete');
         return redirect()->route('platform.places');
     }
 }

@@ -13,13 +13,9 @@
             @foreach($portfolio as $port)
             <h1>{{$port->title}}</h1>
             <div class="portfolio-grid">
-                    @foreach($port->images as $imagePath)
-                        <div class="portfolio-grid-cards">
-                            <a href="{{asset('storage/'.$port->images['path'])}}" data-fancybox="gallery">
-                                <img src="{{asset('storage/'.$port->images['path'])}}" alt="">
-                            </a>
-                        </div>
-                    @endforeach
+                @foreach($port->attachment as $file)
+                    <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
+                @endforeach
                 @endforeach
             </div>
         </div>

@@ -45,8 +45,22 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make('Все Места')
                 ->icon('bs.list')
-                ->route('platform.places')
+                ->route('platform.places'),
+
+            Menu::make('Города')
+                ->icon('bs.list')
+                ->route('platform.city'),
+            Menu::make('Категория')
+                ->icon('bs.list')
+                ->route('platform.category'),
+            Menu::make('Статьи')
+                ->icon('bc.list')
+                ->route('platform.article'),
+            Menu::make('Портфолио')
+                ->icon('bs.list')
+                ->route('platform.portfolio')
         ];
+
     }
 
     /**
