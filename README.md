@@ -1,5 +1,4 @@
-#<h1>#Не raboтает слайдер и некоторые js файлы и некоторые css классы##</h1>
-рабочие маршруты прописаны в routes/web.php
+<p>Не raboтает слайдер и некоторые js файлы и некоторые css классы</p>
 
 Запуск
 <p><code>git clone https://github.com/m1lei/sturdy-spork.git</code> Клонируем репозиторий</p>
