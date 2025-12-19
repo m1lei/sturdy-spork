@@ -80,9 +80,6 @@ class PortfolioEditController extends Screen
                     ->required(),
                 Upload::make('portfolio.attachments')
                     ->title('фото'),
-                Select::make('portfolio.place_id')
-                    ->fromModel(Place::class, 'name')
-                    ->title('Площадка')
             ])
         ];
     }
