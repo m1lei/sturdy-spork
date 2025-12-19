@@ -234,10 +234,10 @@
                 </div>
             </div>
             <div class="swiper i-six-slider">
-                <div class="">
+                <div class="swiper-wrapper">
                     @foreach($portfolios as $port)
                         @foreach($port->attachment as $file)
-                            <div class="">
+                            <div class="swiper-slide">
                                 <a href="#" class="i-six-slid">
                                     <div class="i-six-slid__img">
                                         <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
@@ -247,6 +247,10 @@
                         @endforeach
                     @endforeach
                 </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
             <div class="i-mob-link">
                 <a href="#">Все фото</a>
@@ -298,55 +302,7 @@
                     <div class="i-eight-sub">Вопросы /</div>
                     <div class="i-eight-title">Вы спрашиваете – мы отвечаем</div>
                 </div>
-                <div class="i-eight-right">
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">По каким параметрам выбрать лучшую площадку для свадьбы?</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <p>
-                                    Размеры места для погрузки и разгрузки перед техническим входом. Если данная зона будет слишком маленькой, это застопорит всю работу, и персонал может выбиться из графика.
-                                </p>
-                                <p>
-                                    Наличие парковки и маршруты проезда. Оборудование площадки и мощность электричества. Нужно выяснить, подходит ли уже имеющаяся техника для вашего мероприятия, и хватит ли мощности для подключения дополнительных единиц.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">Что сейчас в тренде?</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <p>
-                                    Размеры места для погрузки и разгрузки перед техническим входом. Если данная зона будет слишком маленькой, это застопорит всю работу, и персонал может выбиться из графика.
-                                </p>
-                                <p>
-                                    Наличие парковки и маршруты проезда. Оборудование площадки и мощность электричества. Нужно выяснить, подходит ли уже имеющаяся техника для вашего мероприятия, и хватит ли мощности для подключения дополнительных единиц.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">Можно ли заказать фотографа?</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <p>
-                                    Размеры места для погрузки и разгрузки перед техническим входом. Если данная зона будет слишком маленькой, это застопорит всю работу, и персонал может выбиться из графика.
-                                </p>
-                                <p>
-                                    Наличие парковки и маршруты проезда. Оборудование площадки и мощность электричества. Нужно выяснить, подходит ли уже имеющаяся техника для вашего мероприятия, и хватит ли мощности для подключения дополнительных единиц.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">По каким параметрам выбрать лучшую площадку для свадьбы?</span><span class="icon" aria-hidden="true"></span></button>
-                            <div class="accordion-content">
-                                <p>
-                                    Размеры места для погрузки и разгрузки перед техническим входом. Если данная зона будет слишком маленькой, это застопорит всю работу, и персонал может выбиться из графика.
-                                </p>
-                                <p>
-                                    Наличие парковки и маршруты проезда. Оборудование площадки и мощность электричества. Нужно выяснить, подходит ли уже имеющаяся техника для вашего мероприятия, и хватит ли мощности для подключения дополнительных единиц.
-                                </p>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -364,6 +320,32 @@
                 </div>
             </div>
         </div>
-    </section>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const swiper = new Swiper('.i-six-slider', {
+                    slidesPerView: 3, // Сколько слайдов показывать
+                    spaceBetween: 20, // Расстояние между слайдами
+                    loop: true,       // Зацикливание
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation:{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    // Адаптив:
+                    breakpoints: {
+                        320: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 }
+                    }
+                });
+            });
+        </script>
+    </section>
 @endsection
