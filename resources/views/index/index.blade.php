@@ -80,7 +80,7 @@
         <div class="container">
             <div class="filter">
                 <div class="filter-title">Поиск по Подмосковью</div>
-                <div class="search-relatives-top">
+                <div class="">
                     <form action="{{route('place.index')}}" method="GET">
                         @method("GET")
                         <div class="filter-list">

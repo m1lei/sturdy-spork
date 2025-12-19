@@ -5,7 +5,7 @@
         <div class="container">
             <div class="filter">
                 <div class="filter-title">Поиск по Подмосковью</div>
-                <div class="search-relatives-top">
+                <div class="">
                     <form action="{{route('place.index')}}" method="GET">
                         <div class="filter-list">
                             @if(isset($city) && count($city))
@@ -37,16 +37,6 @@
                                 </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="sites-map">
-        <div class="container">
-            <div class="sites-map-box">
-                <img src="img/sites-map.png" alt="">
-                <div class="sites-map-btn">
-                    <a href="#" data-fancybox>Поиск по карте</a>
                 </div>
             </div>
         </div>
