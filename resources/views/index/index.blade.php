@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class="first">
-        <div class="portfolio-slider">
+        <div class="swiper first-main-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="first-slide">
@@ -55,6 +55,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
         <div class="first-bottom">
@@ -135,13 +136,13 @@
             <div class="swiper i-three-slider">
                 <div class="swiper-wrapper">
                     @foreach($places as $place)
-                        <div class="">
+                        <div class="swiper-slide">
                         <a href="{{route('place.show',[$place->category->slug,$place->slug])}}" class="i-three-slid">
                             <div class="i-three-slid__img">
                                 <span>{{$place->category->name}}</span>
-                                @foreach($place->attachment as $file)
-                                    <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
-                                @endforeach
+                                @if($place->attachment->first())
+                                    <img src="{{ $place->attachment->first()->url() }}" alt="{{ $place->name }}">
+                                @endif
 
                             </div>
                             <div class="i-three-slid__content">
@@ -162,6 +163,8 @@
 
                 </div>
                 <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
             <div class="i-mob-link">
                 <a href="#">Смотреть каталог</a>
@@ -274,25 +277,28 @@
             <div class="swiper i-seven-slider">
                 <div class="swiper-wrapper">
                     @foreach($articles as $article)
-                        <div class="">
-                            <a href="#" class="i-seven-slid">
-                                @foreach($article->attachment as $file)
-                                    <div class="">
-                                        <a href="{{route('article.show',$article->slug)}}" class="i-six-slid">
-                                            <div class="i-seven-slid__img">
-                                                <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
+                        <div class="swiper-slide">
+                            <a href="{{ route('article.show', $article->slug) }}" class="i-seven-slid">
+                                <div class="i-seven-slid__img">
+                                    {{-- Берем только первое изображение прикрепленное к статье --}}
+                                    @if($article->attachment->first())
+                                        <img src="{{ $article->attachment->first()->url() }}" alt="{{ $article->title }}">
+                                    @else
+                                        <img src="/path-to-default-image.jpg" alt="No image">
+                                    @endif
+                                </div>
                                 <div class="i-seven-slid__content">
-                                    <div class="i-seven-slid__title">{{$article->title}}</div>
+                                    <div class="i-seven-slid__title">{{ $article->title }}</div>
                                 </div>
                             </a>
                         </div>
                     @endforeach
+                </div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
             </div>
-        </div>
         </div>
     </section>
     <section class="i-eight">
@@ -312,7 +318,7 @@
                 <div class="i-baner-left">
                     <div class="i-baner-title">Вам нужна выездная регистрация?</div>
                     <div class="i-baner-btn">
-                        <button id="openModal">подать заявление</button>
+                        <button class="header-menu-link" id="openModal">подать заявление</button>
                     </div>
                 </div>
                 <div class="i-baner-img">
@@ -326,6 +332,7 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
+                //для портфолио
                 const swiper = new Swiper('.i-six-slider', {
                     slidesPerView: 3, // Сколько слайдов показывать
                     spaceBetween: 20, // Расстояние между слайдами
@@ -344,6 +351,52 @@
                         768: { slidesPerView: 2 },
                         1024: { slidesPerView: 3 }
                     }
+                });
+                //для площадок
+                new Swiper('.i-three-slider', {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    loop: true,
+                    navigation: {
+                        // Указываем конкретные стрелки для этого слайдера
+                        nextEl: '.i-three-slider .swiper-button-next',
+                        prevEl: '.i-three-slider .swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.i-three-slider .swiper-pagination',
+                        clickable: true,
+                    },
+                })
+                //для статей
+                new Swiper('.i-seven-slider', {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                    loop: true,
+                    navigation: {
+                        nextEl: '.i-seven-slider .swiper-button-next',
+                        prevEl: '.i-seven-slider .swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.i-seven-slider .swiper-pagination',
+                        clickable: true,
+                    }
+                });
+                //главный слайдер
+                new Swiper('.first-main-slider', {
+                    slidesPerView: 1,      //Всегда один слайд
+                    spaceBetween: 0,       //Нет отступов
+                    loop: true,            //Бесконечно
+                    fadeEffect: {
+                        crossFade: true    //Мягкое наложение при смене
+                    },
+                    autoplay: {
+                        delay: 3000,       //Листать каждые 5 секунд
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.first-main-slider .swiper-pagination',
+                        clickable: true,
+                    },
                 });
             });
         </script>
