@@ -25,3 +25,5 @@ Route::get('/article',[\App\Http\Controllers\ArticleController::class,'index'])-
 Route::get('/article/{articleSlug}',[\App\Http\Controllers\ArticleController::class,'show'])->name('article.show');
 
 Route::post('/application/store',[\App\Http\Controllers\ApplicationController::class,'store'])->name('application.store');
+
+Route::get('/page', [\App\Http\Controllers\PageController::class,'index'])->name('page.index');

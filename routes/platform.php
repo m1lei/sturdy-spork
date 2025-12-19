@@ -53,6 +53,11 @@ Route::screen('/portfolio/create', \App\Orchid\Screens\PortfolioEditController::
 Route::screen('/portfolio/{portfolio}/edit', \App\Orchid\Screens\PortfolioEditController::class)->name('platform.portfolio.edit');
 
 Route::screen('/application',\App\Orchid\Screens\ApplicationListScreen::class)->name('platform.application');
+
+Route::screen('/page',\App\Orchid\Screens\PageListController::class)->name('platform.page');
+Route::screen('/page/create',\App\Orchid\Screens\PageEditController::class)->name('platform.page.create');
+Route::screen('/page/{page}/edit',\App\Orchid\Screens\PageEditController::class)->name('platform.page.edit');
+
 // Main
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');

@@ -34,19 +34,12 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
-            Menu::make('Get Started')
-                ->icon('bs.book')
-                ->title('Navigation')
-                ->route(config('platform.index')),
-
             Menu::make('Добавить место')
                 ->icon('bs.plus-circle')
                 ->route('platform.places.create'),
-
             Menu::make('Все Места')
                 ->icon('bs.list')
                 ->route('platform.places'),
-
             Menu::make('Города')
                 ->icon('bs.list')
                 ->route('platform.city'),
@@ -61,7 +54,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.portfolio'),
             Menu::make('Заявки')
                 ->icon('bs.list')
-                ->route('platform.application')
+                ->route('platform.application'),
+            Menu::make('Страницы')
+                ->icon('bs.list')
+                ->route('platform.page')
         ];
 
     }
