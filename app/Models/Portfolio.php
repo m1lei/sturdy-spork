@@ -14,7 +14,7 @@ class Portfolio extends Model
     protected $fillable = [
       'title',
       'slug',
-      'images'
+      'place_id'
     ];
     protected $casts = [
         'images' => 'array'
