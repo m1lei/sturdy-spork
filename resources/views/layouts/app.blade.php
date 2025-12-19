@@ -45,7 +45,19 @@
                         </svg>
                     </a>
                 </div>
-                <a class="header-menu-link" href="#hidden" data-fancybox><span>Подать заявление</span></a>
+                <button id="openModal" class="header-menu-link">Подать заявление</button>
+                <div id="contactModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;">
+                    <div style="background:white; margin:10% auto; padding:20px; width:300px; border-radius:8px;">
+                        <form id="leadForm" method="POST" action="{{route('application.store')}}">
+                            @csrf
+                            <input type="text" name="name" placeholder="Ваше имя" required><br><br>
+                            <input type="text" name="phone" placeholder="Ваш телефон" required><br><br>
+                            <input type="email" name="email" placeholder="Ваш email" required><br><br>
+                            <button type="submit">Отправить</button>
+                            <button type="button" id="closeModal">Закрыть</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="burger-menu">
                 <div class="header-logo-burger">
@@ -132,5 +144,34 @@
 </footer>
 
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('contactModal');
+
+        // Открытие
+        document.getElementById('openModal').onclick = () => modal.style.display = 'block';
+
+        // Закрытие
+        document.getElementById('closeModal').onclick = () => modal.style.display = 'none';
+
+        // Отправка формы через AJAX (Fetch API)
+        document.getElementById('leadForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            const response = await fetch('/application/store', {
+                method: 'POST',
+                body: formData,
+                headers: { 'X-Requested-With': 'XMLHttpRequest', }
+            });
+
+            if (response.ok) {
+                alert('Заявка отправлена!');
+                modal.style.display = 'none';
+                e.target.reset();
+            }
+        };
+    });
+</script>
 </html>
 

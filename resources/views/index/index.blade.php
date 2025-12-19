@@ -225,7 +225,7 @@
             <div class="i-six-top">
                 <div class="i-six-title">Проведенные свадьбы</div>
                 <div class="i-three-link">
-                    <a href="#">
+                    <a href="{{route('portfolio.index')}}">
                         Смотреть все фото
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.875 5.65675C13.104 5.4694 13.4415 5.50315 13.6288 5.73214L17.1207 9.99995L13.6288 14.2678C13.4415 14.4967 13.104 14.5305 12.875 14.3431C12.646 14.1558 12.6122 13.8183 12.7996 13.5893L15.298 10.5357H3.57136C3.27549 10.5357 3.03564 10.2958 3.03564 9.99995C3.03564 9.70408 3.27549 9.46423 3.57136 9.46423H15.298L12.7996 6.41061C12.6122 6.18162 12.646 5.84411 12.875 5.65675Z" fill="#1D1D1E"/>
@@ -236,11 +236,11 @@
             <div class="swiper i-six-slider">
                 <div class="">
                     @foreach($portfolios as $port)
-                        @foreach($port->images as $imagePath)
+                        @foreach($port->attachment as $file)
                             <div class="">
                                 <a href="#" class="i-six-slid">
                                     <div class="i-six-slid__img">
-                                        <img src="{{ asset('storage/' . $imagePath) }}" alt="{{ $port->title }}">
+                                        <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
                                     </div>
                                 </a>
                             </div>
@@ -272,9 +272,16 @@
                     @foreach($articles as $article)
                         <div class="">
                             <a href="#" class="i-seven-slid">
-                                <div class="i-seven-slid__img">
-                                    <img src="{{asset('storage/'. $article->image)}}" alt="asd">
-                                </div>
+                                @foreach($article->attachment as $file)
+                                    <div class="">
+                                        <a href="{{route('article.show',$article->slug)}}" class="i-six-slid">
+                                            <div class="i-seven-slid__img">
+                                                <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+
                                 <div class="i-seven-slid__content">
                                     <div class="i-seven-slid__title">{{$article->title}}</div>
                                 </div>
@@ -350,7 +357,7 @@
                 <div class="i-baner-left">
                     <div class="i-baner-title">Вам нужна выездная регистрация?</div>
                     <div class="i-baner-btn">
-                        <a href="#">Подать заявление</a>
+                        <button id="openModal">подать заявление</button>
                     </div>
                 </div>
                 <div class="i-baner-img">

@@ -58,7 +58,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.article'),
             Menu::make('Портфолио')
                 ->icon('bs.list')
-                ->route('platform.portfolio')
+                ->route('platform.portfolio'),
+            Menu::make('Заявки')
+                ->icon('bs.list')
+                ->route('platform.application')
         ];
 
     }

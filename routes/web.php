@@ -23,3 +23,5 @@ Route::get('/portfolio/{categorySlug}',[\App\Http\Controllers\PortfolioControlle
 
 Route::get('/article',[\App\Http\Controllers\ArticleController::class,'index'])->name('article.index');
 Route::get('/article/{articleSlug}',[\App\Http\Controllers\ArticleController::class,'show'])->name('article.show');
+
+Route::post('/application/store',[\App\Http\Controllers\ApplicationController::class,'store'])->name('application.store');
