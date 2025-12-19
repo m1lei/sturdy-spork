@@ -2746,9 +2746,10 @@ button {
 	transition: all 0.4s linear;
 }
 .i-seven-slid__img img {
-	aspect-ratio: 1.3/1;
-	width: 100%;
-	transition: all 0.4s linear;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
 }
 .i-six-slid__img img {
 	aspect-ratio: 1.49/1;

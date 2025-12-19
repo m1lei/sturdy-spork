@@ -281,7 +281,6 @@
                                         </a>
                                     </div>
                                 @endforeach
-
                                 <div class="i-seven-slid__content">
                                     <div class="i-seven-slid__title">{{$article->title}}</div>
                                 </div>
