@@ -180,7 +180,7 @@
                             <a href="#" class="i-four-slid">
                                 <div class="i-four-slid__img">
 {{--
-                                    <img src="img/1.png" alt="">
+                                    <img src="img/example.png" alt="">
 --}}
                                 </div>
                                 <div class="i-four-slid__content">
@@ -335,7 +335,7 @@
                 //для портфолио
                 const swiper = new Swiper('.i-six-slider', {
                     slidesPerView: 3, // Сколько слайдов показывать
-                    spaceBetween: 20, // Расстояние между слайдами
+                    spaceBetween: 20, //Расстояние между слайдами
                     loop: true,       // Зацикливание
                     pagination: {
                         el: '.swiper-pagination',
@@ -390,7 +390,7 @@
                         crossFade: true    //Мягкое наложение при смене
                     },
                     autoplay: {
-                        delay: 3000,       //Листать каждые 5 секунд
+                        delay: 3000,       //Листать каждые 3 секунды
                         disableOnInteraction: false,
                     },
                     pagination: {

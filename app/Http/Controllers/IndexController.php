@@ -23,9 +23,9 @@ class IndexController extends Controller
         //Получаем все категории и добавляем к каждой свойство places_count
         $categoryFilter = Category::withCount('places')->get();
 
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolio::paginate();
 
-        $articles = Article::all();
+        $articles = Article::latest()->paginate();
         return view('index.index',compact([
             'city',
             'category',
