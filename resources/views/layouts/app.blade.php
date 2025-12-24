@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     @vite(['resources/css/app.css'])
+    @livewireStyles
 </head>
 <body>
 <header class="header bg-w transparent">
@@ -143,6 +144,7 @@
     </div>
 </footer>
 
+@livewireScripts
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', function() {

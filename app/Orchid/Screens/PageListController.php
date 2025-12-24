@@ -19,7 +19,7 @@ class PageListController extends Screen
     public function query(): iterable
     {
         return [
-            'pages' => Page::all()
+            'pages' => Page::latest()->paginate(10)
         ];
     }
 

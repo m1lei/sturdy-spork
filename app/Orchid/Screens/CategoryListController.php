@@ -18,7 +18,7 @@ class CategoryListController extends Screen
     public function query(): iterable
     {
         return [
-            'categories' => Category::all(),
+            'categories' => Category::latest()->paginate(10),
         ];
     }
 

@@ -18,7 +18,7 @@ class ArticleListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'articles' => Article::all(),
+            'articles' => Article::latest()->paginate(10),
         ];
     }
 

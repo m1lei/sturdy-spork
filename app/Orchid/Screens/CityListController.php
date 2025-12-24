@@ -18,7 +18,7 @@ class CityListController extends Screen
     public function query(): iterable
     {
         return [
-            'cities' => City::all(),
+            'cities' => City::latest()->paginate(10),
         ];
     }
 
