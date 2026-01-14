@@ -23,8 +23,8 @@ class IndexPlace extends Component
 
     public $perPage = 3;//кол-во статей при первой загрузки
 
-    public function updateCitySlug() { $this->resetPage(); $this->perPage = 6;}
-    public function updateCategorySlug() { $this->resetPage(); $this->perPage = 6;}
+    public function updateCitySlug() { $this->resetPage(); $this->perPage = 3;}
+    public function updateCategorySlug() { $this->resetPage(); $this->perPage = 3;}
 
     public function loadMore()
     {
