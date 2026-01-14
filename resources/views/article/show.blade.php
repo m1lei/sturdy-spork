@@ -46,7 +46,7 @@
                         @foreach($article->attachment as $file)
                             <img src="{{ $file->url() }}" alt="{{ $file->alt }}">
                         @endforeach
-                        <div class="site-card-description"> {{$article->content}}
+                        <div class="site-card-description">{!! Illuminate\Support\Str::markdown($article->content)!!}
                         </div>
                     </div>
                 </div>
