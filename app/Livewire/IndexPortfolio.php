@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Portfolio;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,8 +12,8 @@ class IndexPortfolio extends Component
 {
     use WithPagination;
 
-    #[Usl(history: true)]
-    public $category_slug = '';
+    #[Url(history: true)]
+    public $category = '';
 
     public $perPage = 3;
 
@@ -30,16 +31,16 @@ class IndexPortfolio extends Component
 
         $query = Portfolio::with(['place.category', 'attachment'])->whereHas('place');
 
-        if ($this->category_slug){
+        if ($this->category){
             $query->wherehas('place', function ($q) {
-                $q->where('category_id', $this->category_slug);
+                $q->where('category_id', $this->category);
             });
         }
         $portfolio = $query->latest()->paginate($this->perPage);
 
         return view('livewire.index-portfolio', [
             'portfolio' => $portfolio,
-            'category' => $category
+            'categories' => $category
         ]);
     }
 }

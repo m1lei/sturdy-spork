@@ -13,7 +13,7 @@
             <div class="portfolio-tag-wrap">
                 <div class="portfolio-tag">
                     <a href="{{route('portfolio.index')}}" class="active">все</a>
-                    @foreach($category as $cat)
+                @foreach($categories as $cat)
                         <a href="{{route('portfolio.index',['category'=>$cat->id])}}">{{$cat->name}}</a>
                     @endforeach
                 </div>
