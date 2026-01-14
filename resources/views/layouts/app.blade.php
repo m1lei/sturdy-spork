@@ -8,7 +8,7 @@
     @livewireStyles
 </head>
 <body>
-<header class="header bg-w transparent">
+<header class="header ">
     <div class="header-top">
         <div class="header-top__row">
             <div class="header-menu-left">

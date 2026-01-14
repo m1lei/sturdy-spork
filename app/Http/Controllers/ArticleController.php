@@ -10,8 +10,7 @@ class ArticleController extends Controller
     //
     public function index()
     {
-        $articles = Article::latest()->paginate();
-        return view('article.index', compact('articles'));
+        return view('article.index');
     }
 
     public function show(string $articleSlug)
